@@ -3,6 +3,8 @@ const app = express()
 const port = 3000
 
 const bodyParser = require('body-parser')
+
+const config = require('./config/key');
 //이전에 만든 user 모델을 가져옴
 const {User} = require('./models/User')
 
@@ -15,7 +17,7 @@ const {User} = require('./models/User')
 
 //몽구스 = 몽고디비를 편리하게 이용하게 해주는 툴
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://natty:751212@boilerplate.uvqxrhf.mongodb.net/?retryWrites=true&w=majority')
+  mongoose.connect(config.mongoURI)
 .then(() => console.log('MongoDB Connected....')).catch(err => console.log(err))
 
 
